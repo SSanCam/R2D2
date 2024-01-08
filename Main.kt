@@ -1,8 +1,3 @@
-/**
- * @param ejeX es la posición en el eje X
- * @param ejeY es la posición en el eje Y
- * @param direccion es la posición (coordenadas) final del robot tras realizar los movimientos
- */
 fun main() {
 
     var r2d2Pos: List<Int>
@@ -28,8 +23,8 @@ fun main() {
  * Realiza el movimiento del Robot
  *
  * @param movimientos Int (varang) Lista de movimientos a realizar
+ * @return List<Any> Las coordenadas de la posición final del reobot.
  *
- * @return List<Any>
  */
 fun moverRobot(vararg movimientos: Int): List<Int> {
 
@@ -40,9 +35,8 @@ fun moverRobot(vararg movimientos: Int): List<Int> {
 
     /*En cada movimiento el robot gira 90º en direccion antihorario, por lo que puedo dividir el
      eje completo en una circunferencia por cuartos, donde:
-     0-> POSITIVEY; 1-> NEGATIVEX; 2-> NEGATIVEY; 3-> POSITIVEX*/
-
-
+     0-> POSITIVEY; 1-> NEGATIVEX; 2-> NEGATIVEY; 3-> POSITIVEX
+     Sumo o resto la siguiente coordenada según en qué eje se encuentre.*/
     for (pasos in movimientos) {
         when (direccion){
             0 -> ejeY += pasos
@@ -53,10 +47,9 @@ fun moverRobot(vararg movimientos: Int): List<Int> {
 
         //Al finalizar cada movimiento, añado el giro de -90º
         if (direccion == 3) direccion = 0 else direccion += 1
-
- }//FIN FOR
+ }//FIN FOR pasos
     return listOf(ejeX,ejeY, direccion)
-}//fin moverRobot
+}//FIN moverRobot
 
 fun direccionRobot (direccion: Int) = when (direccion){
         0 -> "POSITIVEY"
