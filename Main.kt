@@ -43,18 +43,20 @@ fun moverRobot(vararg movimientos: Int): List<Int> {
             1 -> ejeX -= pasos
             2 -> ejeY -= pasos
             3 -> ejeX += pasos
-        }//FIN WHEN(DIRECCION)
-
+        }
         //Al finalizar cada movimiento, añado el giro de -90º
         if (direccion == 3) direccion = 0 else direccion += 1
- }//FIN FOR pasos
+    }
     return listOf(ejeX,ejeY, direccion)
-}//FIN moverRobot
+}
 
-fun direccionRobot (direccion: Int) = when (direccion){
+/**
+ * @param direccionFinal: Int, Indica en qué cuadrante del eje se encuentra
+ */
+fun direccionRobot (direccionFinal: Int) = when (direccionFinal){
         0 -> "POSITIVEY"
         1 -> "NEGATIVEX"
         2 -> "NEGATIVEY"
         3 -> "POSITIVEX"
         else -> ""
-}//FIN direccionRobot
+}
